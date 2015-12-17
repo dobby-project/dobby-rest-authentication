@@ -1,0 +1,32 @@
+{
+  "name": "dobby-rest-authentication",
+  "version": "0.1.0",
+  "description": "The Dobby REST API dedicated to user authentication",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.3",
+    "json-web-token": "^1.6.3",
+    "node-simple-logger": "^0.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dobby-project/dobby-rest-authentication.git"
+  },
+  "keywords": [
+    "API",
+    "REST",
+    "JWT",
+    "Authentication"
+  ],
+  "author": "gautier",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dobby-project/dobby-rest-authentication/issues"
+  },
+  "homepage": "https://github.com/dobby-project/dobby-rest-authentication"
+}
