@@ -67,15 +67,15 @@ module.exports = {
 		{
 			TokenIssuer.getNewToken(Kind.GUEST, username, function(token, err) {
 				if (err) {
-					res.status(500).send({'error': err});
+					res.status(500).jsonp({'error': err});
 				} else {
-					res.status(201).send({'token': token});
+					res.status(201).jsonp({'token': token});
 				}
 			});
 		}
 		else
 		{
-			res.status(403).send({'error': "Username already used."})
+			res.status(403).jsonp({'error': "Username already used."})
 		}
 	},
 	/**
@@ -97,27 +97,27 @@ module.exports = {
 					{
 						TokenIssuer.getNewToken(user.kind, user.username, function(token, err) {
 							if (err) {
-								res.status(500).send({'error': err});
+								res.status(500).jsonp({'error': err});
 							} else {
-								res.status(201).send({'token': token});
+								res.status(201).jsonp({'token': token});
 							}
 						});
 						return;
 					}
 					else
 					{
-						res.status(403).send({'error': "Wrong password"});
+						res.status(403).jsonp({'error': "Wrong password"});
 						return;
 					}
 				}
 				else
 				{
-					res.status(403).send({'error': "Your account isn't activated (validation email)."});
+					res.status(403).jsonp({'error': "Your account isn't activated (validation email)."});
 					return;
 				}
 			}
 		}
-		res.status(403).send({'error': "Unknown username"});
+		res.status(403).jsonp({'error': "Unknown username"});
 	},
 	/**
 	 * POST /user/validate/:code
@@ -136,7 +136,7 @@ module.exports = {
 				return;
 			}
 		}
-		res.status(403).send({'error': 'Provided validation code is not valid.'});
+		res.status(403).jsonp({'error': 'Provided validation code is not valid.'});
 	},
 	/**
 	 * POST /user
@@ -168,9 +168,9 @@ module.exports = {
 				'email': email,
 				'kind': Kind.USER
 			});
-			res.status(201).send({'success': true});
+			res.status(201).jsonp({'success': true});
 		} else {
-			res.status(403).send({'error': "Username or email already used."});
+			res.status(403).jsonp({'error': "Username or email already used."});
 		}
 	},
 	/**
@@ -191,12 +191,12 @@ module.exports = {
 				user.isEmailValid = false;
 				user.email = email;
 				// TODO: revoke associated tokens
-				res.status(200).send({'success': true});
+				res.status(200).jsonp({'success': true});
 				return;
 			}
 		}
 
-		res.status(403).send({'error': "Authentication failure"});
+		res.status(403).jsonp({'error': "Authentication failure"});
 	},
 	/**
 	 * DELETE /user/:username/:password
@@ -206,6 +206,6 @@ module.exports = {
 		var username = req.params.username;
 		var password = req.params.password;
 
-		res.status(404).send({'error': "Feature not implemented."});
+		res.status(404).jsonp({'error': "Feature not implemented."});
 	}
 };
