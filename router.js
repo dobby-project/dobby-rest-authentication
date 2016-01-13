@@ -11,7 +11,7 @@ module.exports.setup = function(app) {
 	app.post(  '/user',                                 user.create);
 	app.post(  '/user/validate/:code',                  user.validate);
 	app.get(   '/user/:username',                       user.temporaryAuthentication);
-	app.get(   '/user/:username/:password',             user.authenticate);
+	app.post(  '/user/:username',                       user.authenticate);
 	app.put(   '/user/:username/:password',             user.update);
 	app.delete('/user/:username/:password',             user.delete);
 };
