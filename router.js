@@ -8,6 +8,8 @@ module.exports.setup = function(app) {
 	app.get(   '/token/:token',                         token.retrieveData);
 	app.delete('/token/:token',                         token.revoke);
 
+	app.get(   '/validity/:token',                      token.validity);
+
 	app.post(  '/user',                                 user.create);
 	app.post(  '/user/validate/:code',                  user.validate);
 	app.get(   '/user/:username',                       user.temporaryAuthentication);

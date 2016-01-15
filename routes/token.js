@@ -27,5 +27,17 @@ module.exports = {
 		var token = req.params.token;
 		TokenIssuer.revoke(token);
 		res.status(200).send({'success': true});
+	},
+
+	validity: function(req, res) {
+		var token = req.params.token;
+
+		TokenIssuer.solveToken(token, function(data, err, decodeErr) {
+			if (decodeErr || err) {
+				res.status(500).send({'error': decodeErr+err});
+			} else {
+				res.status(200).send({'success': true});
+			}
+		});
 	}
 };
